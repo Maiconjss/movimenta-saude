@@ -1,0 +1,33 @@
+.venv/
+__pycache__/
+*.pyc
+.env
+node_modules/
+.next/
+*.egg-info/
+data/raw/
+
+# Codigo fechado: este repo publico mostra so o problema, os dados e as
+# fontes oficiais (README.md, data/, rules/ ficam de fora deste bloco).
+# Demonstracao do produto funcionando e feita de forma privada.
+backend/app/
+backend/tests/
+backend/migrations/
+backend/scripts/
+backend/*.py
+backend/requirements.txt
+backend/alembic.ini
+backend/pytest.ini
+backend/pyproject.toml
+frontend/src/
+frontend/*.config.*
+frontend/package.json
+frontend/package-lock.json
+frontend/tsconfig.json
+scripts/
+
+# Logs e config interna, nao fazem parte da vitrine publica
+*.log
+.claude/
+frontend/AGENTS.md
+frontend/CLAUDE.md

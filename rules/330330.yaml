@@ -1,0 +1,132 @@
+# Regras de roteamento UBS/UPA - Niteroi (IBGE 330330)
+# So avaliadas DEPOIS que nenhum sinal de alerta (ver sinais_alerta.yaml) for positivo.
+# status: pendente_revisao em TODAS as linhas ate profissional de saude validar.
+#
+# Ver DISCORDANCIAS.md para conflitos entre fontes e qual leitura foi adotada.
+# Qualquer sintoma que nao se encaixe nas regras abaixo cai no default conservador
+# do motor (ver app/rules/engine.py): na duvida, orienta procurar urgencia/192 -
+# nunca UBS por omissao, e o LLM nunca decide isso.
+
+regras:
+  - id: febre_sem_complicacao
+    condicao:
+      sintoma: febre
+      febre_acima_39: false
+      sinais_alerta: false
+    destino: ubs
+    fonte: cab28-v2
+    status_revisao: pendente_revisao
+
+  - id: febre_acima_39
+    condicao:
+      sintoma: febre
+      febre_acima_39: true
+      sinais_alerta: false
+    destino: upa
+    fonte: sp-quando-upa
+    status_revisao: pendente_revisao
+
+  - id: vomito_persistente
+    condicao:
+      sintoma: vomito
+      sinais_alerta: false
+    destino: upa
+    fonte: sp-quando-upa
+    status_revisao: pendente_revisao
+
+  - id: diarreia_com_dor_aguda
+    condicao:
+      sintoma: diarreia
+      dor_aguda: true
+      sinais_alerta: false
+    destino: upa
+    fonte: sp-quando-upa
+    status_revisao: pendente_revisao
+
+  - id: sangramento_ou_corte_profundo
+    condicao:
+      sintoma: corte_ou_sangramento
+      profundo_ou_nao_controlado: true
+      sinais_alerta: false
+    destino: upa
+    fonte: sp-quando-upa
+    status_revisao: pendente_revisao
+
+  - id: fratura_ou_luxacao
+    condicao:
+      sintoma: trauma
+      tipo: [fratura, luxacao]
+      sinais_alerta: false
+    destino: upa
+    fonte: sp-quando-upa
+    status_revisao: pendente_revisao
+
+  - id: colica_renal
+    condicao:
+      sintoma: colica_renal
+      sinais_alerta: false
+    destino: upa
+    fonte: sp-quando-upa
+    status_revisao: pendente_revisao
+
+  - id: crise_asmatica_leve_moderada
+    condicao:
+      sintoma: crise_asmatica
+      intensidade: [leve, moderada]
+      sinais_alerta: false
+    destino: ubs
+    fonte: cab28-v2
+    status_revisao: pendente_revisao
+
+  - id: gestante_dor_abdominal_leve
+    condicao:
+      sintoma: dor_abdominal
+      gestante: true
+      sinais_alerta: false
+    destino: ubs
+    fonte: cab28-v2
+    status_revisao: pendente_revisao
+
+  - id: resfriado_gripe_sem_complicacao
+    condicao:
+      sintoma: resfriado_gripe
+      sinais_alerta: false
+    destino: ubs
+    fonte: einstein-quando-ps
+    status_revisao: pendente_revisao
+
+  - id: corte_pequeno_sem_sutura
+    condicao:
+      sintoma: corte_pequeno
+      sinais_alerta: false
+    destino: ubs
+    fonte: einstein-quando-ps
+    status_revisao: pendente_revisao
+
+  - id: dor_garganta_sem_febre_alta
+    condicao:
+      sintoma: dor_garganta
+      febre_alta: false
+      sinais_alerta: false
+    destino: ubs
+    fonte: einstein-quando-ps
+    status_revisao: pendente_revisao
+
+  - id: dor_cabeca_leve
+    condicao:
+      sintoma: dor_cabeca
+      intensidade: leve
+      persistente: false
+      sinais_alerta: false
+    destino: ubs
+    fonte: einstein-quando-ps
+    status_revisao: pendente_revisao
+
+  - id: doenca_cronica_sem_mudanca
+    condicao:
+      sintoma: doenca_cronica
+      mudanca_padrao: false
+      sinais_alerta: false
+    destino: ubs
+    fonte: einstein-quando-ps
+    status_revisao: pendente_revisao

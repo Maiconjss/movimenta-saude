@@ -1,0 +1,51 @@
+# Sinais de alerta - fixos, universais, nao variam por municipio.
+# Checados ANTES de qualquer regra de roteamento UBS/UPA. Qualquer "sim"
+# aqui => destino = urgencia_192, fluxo PARA (ver README.md desta pasta).
+#
+# status: pendente_revisao em TODAS as linhas ate profissional de saude validar.
+
+sinais:
+  - id: dor_toracica_intensa
+    pergunta: "Está sentindo dor forte no peito, com sensação de pressão ou aperto, que pode se espalhar para o braço ou o queixo?"
+    fonte: einstein-quando-ps
+    status_revisao: pendente_revisao
+
+  - id: dificuldade_respiratoria_grave
+    pergunta: "Está com falta de ar grave ou sensação de sufocamento?"
+    fonte: einstein-quando-ps
+    status_revisao: pendente_revisao
+
+  - id: desmaio_ou_perda_consciencia
+    pergunta: "Desmaiou ou perdeu a consciência de repente?"
+    fonte: einstein-quando-ps
+    status_revisao: pendente_revisao
+
+  - id: confusao_mental_subita
+    pergunta: "A pessoa está confusa, desorientada ou muito diferente do normal, de forma repentina?"
+    fonte: einstein-quando-ps
+    status_revisao: pendente_revisao
+
+  - id: perda_forca_ou_dormencia_subita
+    pergunta: "Perdeu força ou sentiu dormência de repente em um braço, perna ou lado do rosto?"
+    fonte: einstein-quando-ps
+    status_revisao: pendente_revisao
+
+  - id: sangramento_importante
+    pergunta: "Está vomitando, evacuando ou tossindo sangue, ou tem sangramento vaginal importante na gravidez?"
+    fonte: einstein-quando-ps
+    status_revisao: pendente_revisao
+
+  - id: convulsao
+    pergunta: "Teve uma convulsão agora ou está tendo uma crise convulsiva?"
+    fonte: cab28-v2
+    status_revisao: pendente_revisao
+
+  - id: trauma_grave
+    pergunta: "Sofreu um acidente ou trauma grave, com fratura exposta, ferimento grande ou queimadura extensa?"
+    fonte: einstein-quando-ps
+    status_revisao: pendente_revisao
+
+  - id: febre_com_rigidez_nuca
+    pergunta: "Está com febre junto com rigidez no pescoço (dificuldade de encostar o queixo no peito)?"
+    fonte: cab28-v2
+    status_revisao: pendente_revisao

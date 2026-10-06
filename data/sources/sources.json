@@ -1,0 +1,121 @@
+{
+  "_schema": {
+    "id": "identificador curto, usado como referencia em rules/*.yaml",
+    "titulo": "titulo do documento/pagina",
+    "orgao": "instituicao responsavel",
+    "url": "link direto",
+    "tipo": "pdf | html",
+    "acessado_em": "YYYY-MM-DD",
+    "municipio_ibge": "codigo IBGE 6 digitos se especifico de um municipio, null se nacional/estadual",
+    "usado_para": "o que essa fonte fundamenta no projeto",
+    "trechos_extraidos": "citacoes/paginas relevantes, resumidas",
+    "confiabilidade": "alta | media | baixa - alta = texto confirmado extraido direto; baixa = so snippet de busca, nao confirmado no documento original",
+    "status_revisao_clinica": "pendente_revisao ate profissional de saude validar"
+  },
+  "sources": [
+    {
+      "id": "cab28-v2",
+      "titulo": "Caderno de Atenção Básica nº 28, vol. 2 - Acolhimento à Demanda Espontânea: Queixas comuns na Atenção Básica",
+      "orgao": "Ministério da Saúde",
+      "url": "https://bvsms.saude.gov.br/bvs/publicacoes/acolhimento_demanda_espontanea_queixas_comuns_cab28v2.pdf",
+      "tipo": "pdf",
+      "acessado_em": "2026-10-03",
+      "municipio_ibge": null,
+      "usado_para": "Classificação não agudo/agudo (imediato, prioritário, no dia) e exemplos de sintomas por categoria",
+      "trechos_extraidos": "p.20: 'Atendimento prioritário (risco moderado): ... Ex.: Crise asmática leve e moderada, febre sem complicação, gestante com dor abdominal, usuários com suspeita de doenças transmissíveis...'",
+      "confiabilidade": "alta",
+      "status_revisao_clinica": "pendente_revisao"
+    },
+    {
+      "id": "einstein-quando-ps",
+      "titulo": "Quando ir ao pronto-socorro? Saiba as situações que realmente exigem pronto atendimento",
+      "orgao": "Hospital Israelita Albert Einstein",
+      "url": "https://www.einstein.br/n/vida-saudavel/quando-ir-ao-pronto-socorro-saiba-as-situacoes-que-realmente-exigem-pronto-atendimento",
+      "tipo": "html",
+      "acessado_em": "2026-10-03",
+      "municipio_ibge": null,
+      "usado_para": "Lista de sinais de alerta (ida ao PS) e sintomas que podem esperar UBS/telemedicina",
+      "trechos_extraidos": "Revisão técnica: José Leão Souza Jr., cardiologista HIAE. Lista completa 'Quando ir' (dor no peito intensa, dificuldade respiratória grave, desmaio, sangramento, etc.) e 'Quando evitar' (resfriado sem complicação, corte leve, dor de cabeça leve, etc.) extraída integralmente.",
+      "confiabilidade": "alta",
+      "status_revisao_clinica": "pendente_revisao"
+    },
+    {
+      "id": "sms-saoluis-accr",
+      "titulo": "Protocolo de Acolhimento com Classificação de Risco - SUS, Hospitais Municipais de São Luís/MA",
+      "orgao": "Secretaria Municipal de Saúde de São Luís/MA (baseado na Portaria GM/MS nº 2.048/2002)",
+      "url": "https://saude.londrina.pr.gov.br/images/DUES/PROTOCOLO_DE_ACOLHIMENTO_COM_AVALIA%C3%87%C3%83O_E_CLASSIFICA%C3%87%C3%83O_DE_RISCO_DOS_SERVI%C3%87OS_DE_URG%C3%8ANCIA_E_EMERG%C3%8ANCIA/Acolhimento_com_Avalia%C3%A7%C3%A3o_Urg%C3%AAncia_e_Emerg%C3%AAncia_2025.pdf",
+      "tipo": "pdf",
+      "acessado_em": "2026-10-03",
+      "municipio_ibge": null,
+      "usado_para": "Referencia de outro municipio para o sistema de cores (vermelho/amarelo/verde/azul) e exemplos de prioridade zero/vermelha (parada cardiorrespiratoria, infarto, politrauma, choque)",
+      "trechos_extraidos": "p.8-9: '0. PRIORIDADE ZERO (VERMELHA): ... MORTE IMINENTE (ex: parada cardiorrespiratoria, infarto, politrauma, choque hipovolemico). 1. PRIORIDADE I (AMARELA): urgencia, avaliacao em no maximo 30 min...'",
+      "confiabilidade": "alta",
+      "status_revisao_clinica": "pendente_revisao"
+    },
+    {
+      "id": "niteroi-servicos",
+      "titulo": "Serviços - Secretaria de Saúde de Niterói",
+      "orgao": "Prefeitura de Niterói",
+      "url": "https://saude.niteroi.rj.gov.br/servicos/",
+      "tipo": "html",
+      "acessado_em": "2026-10-03",
+      "municipio_ibge": "330330",
+      "usado_para": "Fluxo geral UBS->UPA->Hospital especifico de Niteroi (sem criterio numerico de sintoma)",
+      "trechos_extraidos": "'UPA somente em casos de urgencia e emergencia ou nos feriados e finais de semana quando a UBS esta fechada.' Usuario pode ser encaminhado da UBS para UPA dependendo da gravidade.",
+      "confiabilidade": "media",
+      "status_revisao_clinica": "pendente_revisao"
+    },
+    {
+      "id": "cnes-estabelecimentos-nacional",
+      "titulo": "CNES - Cadastro Nacional de Estabelecimentos de Saúde (Estabelecimentos, dataset nacional)",
+      "orgao": "Ministério da Saúde / DATASUS",
+      "url": "https://dadosabertos.saude.gov.br/dataset/cnes-cadastro-nacional-de-estabelecimentos-de-saude",
+      "tipo": "csv",
+      "acessado_em": "2026-10-03",
+      "municipio_ibge": null,
+      "usado_para": "Fonte de dado (nao regra clinica) para as UPAs de Niteroi. Filtrado por CO_IBGE=330330 e TP_UNIDADE=73 (Pronto Atendimento/UPA 24h). 3 UPAs encontradas, 1 desabilitada (CO_MOTIVO_DESAB=07, excluida de is_entry_point).",
+      "trechos_extraidos": "Download direto: https://s3.sa-east-1.amazonaws.com/ckan.saude.gov.br/CNES/cnes_estabelecimentos_csv.zip (~231MB descompactado, nao versionado no git por tamanho). Atualizado diariamente.",
+      "confiabilidade": "alta",
+      "status_revisao_clinica": "nao_aplicavel"
+    },
+    {
+      "id": "cnes-api-dadosabertos",
+      "titulo": "API de Dados Abertos do Ministério da Saúde (DEMAS) - endpoint /cnes/estabelecimentos",
+      "orgao": "Ministério da Saúde",
+      "url": "https://apidadosabertos.saude.gov.br/v1/#/CNES/get_cnes_estabelecimentos",
+      "tipo": "api",
+      "acessado_em": "2026-10-03",
+      "municipio_ibge": null,
+      "usado_para": "NAO USADO PARA INGESTAO AINDA - testada e confirmada funcional (filtros codigo_tipo_unidade, codigo_municipio), mas a ingestao atual usa o CSV estatico. Marcada como melhoria futura (evita manter CSV de 231MB local, dados sempre atualizados).",
+      "trechos_extraidos": "GET https://apidadosabertos.saude.gov.br/cnes/estabelecimentos?codigo_tipo_unidade=73&codigo_municipio=330330 retornou as mesmas 3 UPAs do CSV, confirmando consistencia entre as duas fontes.",
+      "confiabilidade": "alta",
+      "status_revisao_clinica": "nao_aplicavel"
+    },
+    {
+      "id": "sp-quando-upa",
+      "titulo": "Saiba quando procurar uma Unidade de Pronto Atendimento",
+      "orgao": "Prefeitura de São Paulo",
+      "url": "https://prefeitura.sp.gov.br/w/saiba-quando-procurar-uma-unidade-de-pronto-atendimento",
+      "tipo": "html",
+      "acessado_em": "2026-10-03",
+      "municipio_ibge": null,
+      "usado_para": "Lista de sintomas para UPA e limiar numerico de febre (>39C)",
+      "trechos_extraidos": "UPA: vomito, febre acima de 39C, diarreia com dor aguda, sangramento ou cortes profundos, fraturas e luxacoes, colica renal, falta de ar intensa, convulsoes, infarto, AVC, dor no peito intensa. UPA atende urgencia 'que nao configura emergencia com risco iminente de vida'; emergencia de verdade = SAMU/hospital.",
+      "confiabilidade": "alta",
+      "status_revisao_clinica": "pendente_revisao"
+    },
+    {
+      "id": "ms-ubs-ou-upa-2025",
+      "titulo": "UBS ou UPA: saiba quando procurar a unidade mais próxima de você",
+      "orgao": "Ministério da Saúde (gov.br/saude)",
+      "url": "https://www.gov.br/saude/pt-br/assuntos/noticias/2025/outubro/ubs-ou-upa-saiba-quando-procurar-a-unidade-mais-proxima-de-voce",
+      "tipo": "html",
+      "acessado_em": "2026-10-03",
+      "municipio_ibge": null,
+      "usado_para": "NAO USADO AINDA - pagina exige login, nao foi possivel confirmar o conteudo (inclusive um limiar de febre 39C citado em snippet de busca, NAO CONFIRMADO no texto original)",
+      "trechos_extraidos": null,
+      "confiabilidade": "baixa",
+      "status_revisao_clinica": "pendente_revisao"
+    }
+  ]
+}
